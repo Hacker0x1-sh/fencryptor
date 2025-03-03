@@ -1,7 +1,7 @@
 {
   "name": "fencryptor",
   "version": "1.0.0",
-  "description": "A CLI tool to encrypt or decrypt files in a folder",
+  "description": "A TypeScript CLI tool to encrypt or decrypt files and folders using AES-256-CBC.",
   "main": "dist/index.js",
   "bin": {
     "fencryptor": "dist/index.js"
@@ -12,8 +12,25 @@
     "test": "jest",
     "prepublishOnly": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hacker0x1-sh/fencryptor.git"
+  },
+  "keywords": [
+    "encryption",
+    "decryption",
+    "cli",
+    "typescript",
+    "aes-256",
+    "security",
+    "hacker"
+  ],
+  "author": "Hacker0x1-sh",
   "license": "MIT",
-  "author": "Kris , Ho Kai Chun",
+  "bugs": {
+    "url": "https://github.com/Hacker0x1-sh/fencryptor/issues"
+  },
+  "homepage": "https://github.com/Hacker0x1-sh/fencryptor#readme",
   "devDependencies": {
     "@types/commander": "^2.12.2",
     "@types/jest": "^29.5.0",
