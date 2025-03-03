@@ -26,13 +26,16 @@ function getRootFolder(): string {
 }
 
 export function setupCLI(): void {
+
+  // Prepend banner to help output
+  console.log(BANNER);
+
   program
     .name('fencryptor')
     .description('A CLI tool to encrypt or decrypt files or folders. Use "*" for Desktop, "**" for root.')
     .version('1.0.0')
     .on('--help', () => {
-      // Prepend banner to help output
-      console.log(BANNER);
+     
     });
 
   program
