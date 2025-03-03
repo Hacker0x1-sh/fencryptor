@@ -15,3 +15,14 @@ A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 ## Notes
 - Test on a small folder first to avoid data loss.
 - Passwords are passed as arguments (insecure for production; consider prompting).
+- A PDF report (`fencryptor-report-<date>.pdf`) is generated in the current directory after each encrypt/decrypt operation, listing the operation details and affected files.
+
+## Usage
+- **Encrypt**: `fencryptor encrypt <path> -p <password>`
+  - Generates a PDF report after completion.
+- **Decrypt**: `fencryptor decrypt <path> -p <password>`
+  - Generates a PDF report after completion.
+- **Show Tool Location**: `fencryptor location`
+- **Help**: `fencryptor --help`
+
+
