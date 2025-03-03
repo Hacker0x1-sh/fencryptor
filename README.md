@@ -10,7 +10,7 @@ A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 ## Usage
 - Encrypt: `npm start -- encrypt <folder> -p <password>`
 - Decrypt: `npm start -- decrypt <folder> -p <password>`
-- Help: `npm start -- --help`
+- Help: `node ./dist/index.js --help`
 
 ## Notes
 - Test on a small folder first to avoid data loss.
