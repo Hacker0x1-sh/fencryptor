@@ -1,4 +1,14 @@
 # Encryption CLI [F E N C R Y P T O R  v1.0.0]
+```
+   _____ _   _ _____   _____   _____ 
+  /     | | | |     | |     | |     | 
+ /______| |_| |_____| |_____| |_____| 
+ |  *** |     |  *** |  ***  |  ***  | 
+ |  *** |_____|  *** |_______|_______|
+ 
+  F E N C R Y P T O R  v1.0.0
+  > Secure Your Data, Hack the World <
+```
 
 A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 
