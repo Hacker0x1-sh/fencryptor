@@ -1,4 +1,4 @@
-# Encryption App
+# Encryption CLI [F E N C R Y P T O R  v1.0.0]
 
 A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 
