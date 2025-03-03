@@ -1,6 +1,6 @@
 {
   "name": "fencryptor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A TypeScript CLI tool to encrypt or decrypt files and folders using AES-256-CBC.",
   "main": "dist/index.js",
   "bin": {
