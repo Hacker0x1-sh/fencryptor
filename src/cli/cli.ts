@@ -12,8 +12,10 @@ const BANNER = `
  |  *** |     |  *** |  ***  |  ***  | 
  |  *** |_____|  *** |_______|_______|
  
-  F E N C R Y P T O R  v1.0.0
+  F E N C R Y P T O R  v1.1.2
   > Secure Your Data, Hack the World <
+  > Encrypt or Decrypt Files/Folders <
+  > By HKHackerCloud - Hong Kong <
 `;
 
 function getDefaultFolder(): string {
@@ -25,9 +27,6 @@ function getRootFolder(): string {
 }
 
 export function setupCLI(): void {
-
-  console.log(BANNER);
-
   program
     .name('fencryptor')
     .description('A CLI tool to encrypt or decrypt files or folders. Use "*" for Desktop, "**" for root.')
@@ -43,6 +42,7 @@ export function setupCLI(): void {
       let resolvedPath = targetPath;
       if (targetPath === '*') resolvedPath = getDefaultFolder();
       else if (targetPath === '**') resolvedPath = getRootFolder();
+      else resolvedPath = path.resolve(process.cwd(), targetPath);
       await runCommand({ folderPath: resolvedPath, password: options.password, mode: 'encrypt' });
     });
 
@@ -55,6 +55,7 @@ export function setupCLI(): void {
       let resolvedPath = targetPath;
       if (targetPath === '*') resolvedPath = getDefaultFolder();
       else if (targetPath === '**') resolvedPath = getRootFolder();
+      else resolvedPath = path.resolve(process.cwd(), targetPath);
       await runCommand({ folderPath: resolvedPath, password: options.password, mode: 'decrypt' });
     });
 
@@ -91,36 +92,41 @@ async function runCommand(options: EncryptionOptions): Promise<void> {
       console.warn('WARNING: Encrypting ALL files from root directory. This may affect system files! Ensure you have a full backup!');
     }
 
-    // Track affected files
     const affectedFiles: string[] = [];
+    const logEntries: string[] = [];
     const originalConsoleLog = console.log;
     console.log = (...args) => {
-      originalConsoleLog(...args);
-      const message = args[0];
+      const message = args.join(' ');
+      originalConsoleLog(message);
+      logEntries.push(message);
       if (message.startsWith('Encrypted:') || message.startsWith('Decrypted:')) {
         affectedFiles.push(message.split(': ')[1]);
       }
     };
 
+    const startTime = Date.now();
     await processPath(options.folderPath, options.password, options.mode);
+    const executionTime = (Date.now() - startTime) / 1000; // Convert to seconds
 
-    // Restore console.log and generate report
     console.log = originalConsoleLog;
     console.log(`${options.mode === 'encrypt' ? 'Encryption' : 'Decryption'} completed!`);
 
+    const toolDir = path.dirname(process.argv[1]);
     const reportData: ReportData = {
       operation: options.mode,
       targetPath: options.folderPath,
       affectedFiles,
-      timestamp: new Date()
+      timestamp: new Date(),
+      logEntries,
+      executionTime
     };
-    const reportPath = generatePDFReport(reportData);
+    const reportPath = generatePDFReport(reportData, toolDir);
     console.log(`Report generated: ${reportPath}`);
   } catch (error) {
     if (error instanceof Error) {
       console.error(`${options.mode} failed: ${error.message}`);
     } else {
-      console.error(`${options.mode} failed: ${error}`);
+      console.error(`${options.mode} failed:`, error);
     }
     process.exit(1);
   }
