@@ -12,7 +12,7 @@ const BANNER = `
  |  *** |     |  *** |  ***  |  ***  | 
  |  *** |_____|  *** |_______|_______|
  
-  F E N C R Y P T O R  v1.1.2
+  F E N C R Y P T O R  v1.1.3
   > Secure Your Data, Hack the World <
   > Encrypt or Decrypt Files/Folders <
   > By HKHackerCloud - Hong Kong <
@@ -30,7 +30,7 @@ export function setupCLI(): void {
   program
     .name('fencryptor')
     .description('A CLI tool to encrypt or decrypt files or folders. Use "*" for Desktop, "**" for root.')
-    .version('1.0.0')
+    .version('1.1.3')
     .addHelpText('beforeAll', BANNER);
 
   program
@@ -67,10 +67,10 @@ export function setupCLI(): void {
       console.log(`fencryptor is installed at: ${toolPath}`);
     });
 
-  if (!process.argv.slice(2).length) {
-    console.log(BANNER);
-    program.help();
-  }
+  // if (!process.argv.slice(2).length) {
+  //   console.log(BANNER);
+  //   program.help();
+  // }
 
   program.parseAsync(process.argv).catch(err => {
     console.error('Error:', err);
