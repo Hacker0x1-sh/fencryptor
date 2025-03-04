@@ -17,10 +17,18 @@ A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 2. Run `npm install` to install dependencies.
 3. Compile with `npm run build`.
 
-## Usage
+## Local Usage
 - Encrypt: `npm start -- encrypt <folder> -p <password>`
 - Decrypt: `npm start -- decrypt <folder> -p <password>`
 - Help: `node ./dist/index.js --help`
+
+## Global Usage
+- **Encrypt**: `fencryptor encrypt <path> -p <password>`
+  - Generates a PDF report after completion.
+- **Decrypt**: `fencryptor decrypt <path> -p <password>`
+  - Generates a PDF report after completion.
+- **Show Tool Location**: `fencryptor location`
+- **Help**: `fencryptor --help`
 
 ## Notes
 - Test on a small folder first to avoid data loss.
@@ -30,13 +38,5 @@ A TypeScript CLI tool to encrypt or decrypt files in a folder using AES-256-CBC.
 - `fencryptor-report.pdf`: A professional PDF report with summary, affected files table, logs, and system details.
 - `fencryptor-report.log`: Log file with operation details and console output.
 - `README.txt`: Information about the report and tool usage.
-
-## Usage
-- **Encrypt**: `fencryptor encrypt <path> -p <password>`
-  - Generates a PDF report after completion.
-- **Decrypt**: `fencryptor decrypt <path> -p <password>`
-  - Generates a PDF report after completion.
-- **Show Tool Location**: `fencryptor location`
-- **Help**: `fencryptor --help`
 
 
